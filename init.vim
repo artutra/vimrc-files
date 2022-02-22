@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'airblade/vim-gitgutter'
