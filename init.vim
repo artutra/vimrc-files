@@ -5,6 +5,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
+Plug 'cohama/lexima.vim'
 
 " Buscador de arquivos na pasta atual
 if isdirectory('/usr/local/opt/fzf')
