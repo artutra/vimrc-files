@@ -56,6 +56,8 @@ vim.cmd('colorscheme dracula')
 vim.opt.number = true
 
 vim.api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F2>', '<cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
+vim.opt.termguicolors = true
 
 -- SPLITS and TABBED FILES
 vim.opt.splitbelow = true
