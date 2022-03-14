@@ -133,6 +133,41 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local get_tailwind_config = function()
+  local opts = {
+    filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "django-html", "edge", "eelixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "elm" },
+    init_options = {
+      userLanguages = {
+        elm = "html",
+        eelixir = "html-eex",
+        eruby = "erb"
+      }
+    },
+    settings = {
+      tailwindCSS = {
+        classAttributes = { "class", "className", "classList", "ngClass" },
+        lint = {
+          cssConflict = "warning",
+          invalidApply = "error",
+          invalidConfigPath = "error",
+          invalidScreen = "error",
+          invalidTailwindDirective = "error",
+          invalidVariant = "error",
+          recommendedVariantOrder = "warning"
+        },
+        validate = true,
+        experimental = {
+          classRegex = {
+            "\\bclass\\s+\"([^\"]*)\""
+          }
+        }
+      },
+    }
+  }
+
+  return opts
+end
+
 local lsp_installer = require("nvim-lsp-installer")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -146,6 +181,9 @@ lsp_installer.on_server_ready(function(server)
         on_attach = on_attach,
         capabilities = capabilities,
     }
+    if server.name == 'tailwindcss' then
+	opts = get_tailwind_config()
+    end
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then
     --     opts.root_dir = function() ... end
